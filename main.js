@@ -76,6 +76,8 @@ var Ball = (function () {
             this.velocity.y *= -1;
         }
         else if (this.y - this.radius >= Main.canvas.height) {
+            Main.ball.y = Main.canvas.height - 40;
+            Main.ball.x = Main.canvas.width / 2;
             document.location.reload();
         }
     };
