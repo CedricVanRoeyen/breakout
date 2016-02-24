@@ -1,14 +1,20 @@
 class Main {
+  paddleWidth: number;
+  paddleHeight: number;
+
   static canvas: HTMLCanvasElement;
   static context: CanvasRenderingContext2D;
 
   static ball: Ball;
 
-  paddleHeight: number = 10;
-  paddleWidth: number = 75;
   static paddle: Paddle;
 
   static level1: Level;
+
+  constructor() {
+    this.paddleWidth = 75;
+    this.paddleHeight = 10;
+  }
 
   init(): void {
     Main.canvas = <HTMLCanvasElement>document.getElementById("gameCanvas");
@@ -107,9 +113,13 @@ class Ball {
     }
     // bottom => gameOver
     else if (this.y - this.radius >= Main.canvas.height) {
+    /*  Main.ball.velocity.x = 0;
+      Main.ball.velocity.y = 0;
       Main.ball.y = Main.canvas.height - 40;
       Main.ball.x = Main.canvas.width/2;
-      document.location.reload();
+
+      document.location.reload();*/
+      new Main().init();
     }
   };
 
@@ -239,7 +249,7 @@ class Level {
 }
 
 window.onload = function() {
-  var game = new Main();
+  var game= new Main();
   game.init();
   var gameLoop = function(): void {
     game.update();
